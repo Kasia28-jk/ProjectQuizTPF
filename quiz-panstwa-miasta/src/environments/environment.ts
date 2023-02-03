@@ -5,9 +5,16 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    
+    apiKey: "AIzaSyBGbNI5aDQNrEBFHFDG_Nncc4r2IxGO_qQ",
+    authDomain: "quiz-panstwa-miasta.firebaseapp.com",
+    projectId: "quiz-panstwa-miasta",
+    storageBucket: "quiz-panstwa-miasta.appspot.com",
+    messagingSenderId: "602656582706",
+    appId: "1:602656582706:web:fda066fb04480b0a7d202b",
+    measurementId: "G-QH3JFPZWYY"
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
