@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h1>Wylosowana litera to: {{ getRandomLetter() }}</h1>
+<h1>Wylosowana litera to: {{ letter }}</h1>
 <form>
   <div class="form-container">
     <div class="sub-form-1">
@@ -32,6 +32,12 @@
   <input type="submit" value="Zatwierdz" (click)="onSubmitClick()">
   <input type="submit" value="Zakoncz gre" (click)="onEndGameClick()">
 </form>
+<div>
+  <p>Time:</p>
+  <p>{{timeLeft}}</p>
+</div>
+
+
 </body>
 
 </html>
