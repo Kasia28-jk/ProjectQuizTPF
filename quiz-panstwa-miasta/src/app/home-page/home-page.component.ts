@@ -17,6 +17,6 @@ export class HomePageComponent {
 
   start()
   {
-    
+
   }
 }

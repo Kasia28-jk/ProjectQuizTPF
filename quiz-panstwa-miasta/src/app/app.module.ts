@@ -8,18 +8,24 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import {MainGameWindowComponent} from "./main-game-window/main-game-window.component";
+import {FormsModule} from "@angular/forms";
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    MainGameWindowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
