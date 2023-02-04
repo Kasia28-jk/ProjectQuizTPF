@@ -1,4 +1,23 @@
-<button type="button" (click)="authService.GoogleAuth()">
-    Authenticate with Google
-</button>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+<h1>Quiz państwa-miasta</h1>
+<body>
+<div class="form-container">
+    <button (click)="start()">
+        Rozpocznij gre
+    </button>
+    <cool-google-button color="dark" (click)="authService.GoogleAuth()">
+        Authenticate with Google
+    </cool-google-button>
+    <cool-facebook-button color="dark" (click)="authService.FacebookAuth()">
+        Authenticate with Facebook
+    </cool-facebook-button>
+</div>
+
+</body>

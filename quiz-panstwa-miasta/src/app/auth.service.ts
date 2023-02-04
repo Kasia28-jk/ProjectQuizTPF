@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider,FacebookAuthProvider  } from 'firebase/auth';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,11 @@ export class AuthService {
 
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider());
+  }
+
+  FacebookAuth()
+  {
+      return this.AuthLogin(new FacebookAuthProvider());
   }
 
   AuthLogin(provider: any) {

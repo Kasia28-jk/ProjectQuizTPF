@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MainGameWindowComponent } from './main-game-window/main-game-window.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent},
-  { path: 'register', component: RegisterPageComponent},
+  { path: '', component: RegisterPageComponent},
+  { path: 'waitingroom', component: HomePageComponent},
+  { path: 'game', component: MainGameWindowComponent},
 ];
 
 export const routing = RouterModule.forRoot(routes, { enableTracing: true })

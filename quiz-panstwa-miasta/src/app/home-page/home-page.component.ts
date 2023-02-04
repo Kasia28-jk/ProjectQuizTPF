@@ -12,7 +12,7 @@ export class HomePageComponent {
   login()
   {
     console.log("hey")
-    this.router.navigateByUrl('register');
+    //this.router.navigateByUrl('register');
   }
 
   start()

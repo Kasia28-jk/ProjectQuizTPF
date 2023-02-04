@@ -12,4 +12,9 @@ export class RegisterPageComponent {
   ngOnInit(): void {
   }
 
+  start()
+  {
+
+  }
+
 }

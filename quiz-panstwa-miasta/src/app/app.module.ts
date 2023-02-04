@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import {MainGameWindowComponent} from "./main-game-window/main-game-window.component";
 import {FormsModule} from "@angular/forms";
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
+import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
+    CoolSocialLoginButtonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
