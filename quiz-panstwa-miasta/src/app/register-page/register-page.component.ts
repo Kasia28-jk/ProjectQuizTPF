@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -7,14 +8,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent {
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   start()
   {
-
+      this.router.navigateByUrl('waitingroom');
   }
 
 }

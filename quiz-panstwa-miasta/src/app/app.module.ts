@@ -12,13 +12,16 @@ import {MainGameWindowComponent} from "./main-game-window/main-game-window.compo
 import {FormsModule} from "@angular/forms";
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RegisterPageComponent,
-    MainGameWindowComponent
+    MainGameWindowComponent,
+    MatDialogModule,
+    MatToolbarModule
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,9 @@ import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    CoolSocialLoginButtonsModule
+    CoolSocialLoginButtonsModule,
+    MatDialogModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
