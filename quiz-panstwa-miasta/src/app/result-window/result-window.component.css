@@ -1,0 +1,44 @@
+html, body {
+  background-color: #4D0A65;
+  height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  margin: 50px 0 0 0;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.buttons-container {
+  position: absolute;
+  bottom: 400px;
+  right: 300px;
+
+}
+
+input[type="submit"] {
+  width: 334px;
+  height: 110px;
+  border-radius:25px
+}
+
+td {
+  width: 500px;
+}
+
+table tr {
+  border-radius: 25px;
+  background-color: #D3B7E5;
+}
+.table {
+  background-color: white;
+  position: relative;
+  top: 200px;
+  left: 200px;
+  width: 200px;
+  height: 500px;
+}
