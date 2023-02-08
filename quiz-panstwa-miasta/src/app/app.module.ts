@@ -10,14 +10,16 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import {MainGameWindowComponent} from "./main-game-window/main-game-window.component";
 import {FormsModule} from "@angular/forms";
-import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { ResultWindowComponent } from './result-window/result-window.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RegisterPageComponent,
-    MainGameWindowComponent
+    MainGameWindowComponent,
+    ResultWindowComponent
   ],
   imports: [
     BrowserModule,
