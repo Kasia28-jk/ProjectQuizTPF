@@ -11,6 +11,7 @@ h1 {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
+  color: white;
 }
 
 .buttons-container {
@@ -23,7 +24,8 @@ h1 {
 input[type="submit"] {
   width: 334px;
   height: 110px;
-  border-radius:25px
+  border-radius:25px;
+  font-size: 20pt;
 }
 
 td {

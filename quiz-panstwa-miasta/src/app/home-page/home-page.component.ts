@@ -19,7 +19,7 @@ export class HomePageComponent {
 
   start()
   {
-
+    this.router.navigateByUrl('game');
   }
 
   openDialog(): void {

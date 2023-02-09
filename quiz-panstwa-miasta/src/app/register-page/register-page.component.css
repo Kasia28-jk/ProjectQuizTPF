@@ -1,11 +1,13 @@
 html, body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #930193;
-  }
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#740474;
+}
+
+
 
   .form-container {
     display: flex;
@@ -13,4 +15,24 @@ html, body {
     flex-direction: column;
     width: 30%;
     grid-gap: 20px
+  }
+
+  h1 {
+    margin: 50px 0 0 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: white;
+    font-size: 32pt;
+  }
+  
+
+  button {
+    width: 334px;
+    height: 110px;
+    border-radius:25px;
+    background-color: #4D0A65;
+    color: white;
   }

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-game-window',
@@ -30,7 +31,7 @@ export class MainGameWindowComponent {
   }
 
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore,private router: Router) {
     this.gameID = this.generateGameId()
     this.firestoreCollection = firestore.collection('answers');
   }
@@ -92,7 +93,8 @@ export class MainGameWindowComponent {
 
 
   onEndGameClick() {
-    this.saveDataToFirestore()
+    this.saveDataToFirestore();
+    this.router.navigateByUrl('result');
   }
 
   generateGameId() {
