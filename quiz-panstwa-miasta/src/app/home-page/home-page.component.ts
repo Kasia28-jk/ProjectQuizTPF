@@ -23,7 +23,6 @@ export class HomePageComponent {
   }
 
   openDialog(): void {
-    console.log("dupa")
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '450px',
     height:'200px' });
