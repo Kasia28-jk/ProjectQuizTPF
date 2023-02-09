@@ -12,16 +12,18 @@ import {MainGameWindowComponent} from "./main-game-window/main-game-window.compo
 import {FormsModule} from "@angular/forms";
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { DialogOverviewExampleDialogComponent } from './dialog-overview-example-dialog/dialog-overview-example-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RegisterPageComponent,
     MainGameWindowComponent,
-    MatDialogModule,
-    MatToolbarModule
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +33,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AngularFirestoreModule,
     FormsModule,
     CoolSocialLoginButtonsModule,
-    MatDialogModule,
-    MatToolbarModule
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

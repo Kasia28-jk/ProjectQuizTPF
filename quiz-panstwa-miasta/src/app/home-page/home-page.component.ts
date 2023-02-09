@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogOverviewExampleDialogComponent } from '../dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 
 @Component({
   selector: 'app-home-page',
@@ -22,8 +23,6 @@ export class HomePageComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent);
+  }
 }
