@@ -27,6 +27,7 @@ import { ResultWindowComponent } from './result-window/result-window.component'
     DialogOverviewExampleDialogComponent,
     ResultWindowComponent
   ],
+  entryComponents: [DialogOverviewExampleDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
