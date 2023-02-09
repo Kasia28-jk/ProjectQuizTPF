@@ -8,7 +8,6 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection}
 })
 export class MainGameWindowComponent {
 
-  private alphabet = 'abcdefghijklmnopqrstuvwxyz'
   name: string | undefined;
   email: string | undefined;
   country: any;
@@ -21,6 +20,14 @@ export class MainGameWindowComponent {
   letter: any;
   letters: string[] = [];
   firestoreCollection : AngularFirestoreCollection;
+  timeLeft: number;
+  intervalId: any;
+
+  ngOnInit(): void {
+
+    this.letter = this.getRandomLetter()
+    this.startTimer();
+  }
 
 
   constructor(private firestore: AngularFirestore) {
@@ -28,13 +35,35 @@ export class MainGameWindowComponent {
     this.firestoreCollection = firestore.collection('answers');
   }
 
-
-  getRandomLetter() {
-    this.alphabet.split('');
-    this.letter = this.alphabet[Math.floor(Math.random() * this.alphabet.length)];
-    this.letters.push(this.letter);
-    return this.letter;
+  startTimer() {
+    this.timeLeft = 120;
+    this.intervalId = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        clearInterval(this.intervalId);
+        this.onEndGameClick()
+      }
+    }, 1000);
   }
+
+
+  getRandomLetter(): string {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    if (this.letters.length === alphabet.length) {
+      this.letters = [];
+    }
+
+    let randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+    while (this.letters.includes(randomLetter)) {
+      randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
+
+    this.letters.push(randomLetter);
+    return randomLetter;
+  }
+
 
   saveDataToFirestore() {
     this.firestoreCollection.add({
@@ -58,7 +87,7 @@ export class MainGameWindowComponent {
     this.item = ''
     this.plant = ''
     this.river = ''
-    this.getRandomLetter()
+    this.letter = this.getRandomLetter()
   }
 
 
