@@ -7,13 +7,7 @@
 </head>
 <h1>Quiz państwa-miasta</h1>
 <body>
-
-
-<div class="form-container">
-  <button mat-raised-button (click)="openDialog()">Wygeneruj Link!</button>
-  <button mat-raised-button (click)="start()">Zacznij gre</button>
-</div>
-
+<div>
 <table class="table">
   <table>
     <tr>
@@ -33,4 +27,11 @@
     </tr>
   </table>
 </table>
+</div>
+
+<div class="buttons-container">
+  <input type="submit" (click)=openDialog() value="Wygeneruj Link!">
+  <br><br>
+  <input type="submit" (click)=start() value="Zacznij gre">
+</div>
 </body>
