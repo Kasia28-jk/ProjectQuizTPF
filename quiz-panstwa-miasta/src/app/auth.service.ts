@@ -22,11 +22,9 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         if(result.user) {          
-          this.router.navigate(['/cards']);
-        } else {
-          this.afAuth.signOut();
-          this.router.navigate(['/']);
-        }
+          this.router.navigate(['']);
+          console.log("hej")
+        } 
       })
       .catch((error) => {
         console.log(error);
