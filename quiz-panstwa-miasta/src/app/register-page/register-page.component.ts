@@ -15,7 +15,17 @@ export class RegisterPageComponent {
 
   start()
   {
-      this.router.navigateByUrl('waitingroom?code=abcd');
+      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
+      const lengthOfCode = 4;
+      const hash = this.makeRandom(4, possible)
+      this.router.navigateByUrl('waitingroom?code=' + hash);
   }
 
+   makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
 }

@@ -7,6 +7,7 @@ import { User } from './models/user';
 })
 export class UserService {
   private path = '/users'
+  usersByCode: User[];
   users : AngularFirestoreCollection<User> = null
   constructor(private db: AngularFirestore) {
     this.users = db.collection(this.path)
@@ -17,4 +18,10 @@ export class UserService {
       return this.users.add(user);
    }
 
+
+   getUsersByCode(code: string)
+   {
+      return this.db.collection(this.path, x =>x
+        .where('code','==', code)).valueChanges();
+   }
 }
