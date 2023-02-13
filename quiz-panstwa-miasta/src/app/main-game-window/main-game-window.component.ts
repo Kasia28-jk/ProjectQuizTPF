@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-main-game-window',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MainGameWindowComponent {
 
+  userId: string
   name: string | undefined;
   email: string | undefined;
   country: any;
@@ -28,10 +30,12 @@ export class MainGameWindowComponent {
 
     this.letter = this.getRandomLetter()
     this.startTimer();
+
+    this.userId = this.authService.getUserId();
   }
 
 
-  constructor(private firestore: AngularFirestore,private router: Router) {
+  constructor(private firestore: AngularFirestore,private router: Router, private authService: AuthService) {
     this.gameID = this.generateGameId()
     this.firestoreCollection = firestore.collection('answers');
   }
@@ -75,6 +79,7 @@ export class MainGameWindowComponent {
       plant: this.plant,
       river: this.river,
       gameID: this.gameID,
+      userId: this.userId,
       letter: this.letter
     })
 

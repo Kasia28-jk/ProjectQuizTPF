@@ -7,7 +7,7 @@ export interface IUser
 {
   userId: string;
   userName: string;
-} 
+}
 
 @Injectable({
   providedIn: 'root'
@@ -32,14 +32,14 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        if(result.user) {          
+        if(result.user) {
           this.router.navigate(['']);
           console.log("hej")
           this.idUser = result.user.uid;
           console.log(this.idUser);
           this.nameUser= result.user.displayName;
           console.log(this.nameUser);
-        } 
+        }
       })
       .catch((error) => {
         console.log(error);
