@@ -15,7 +15,7 @@ export class RegisterPageComponent {
 
   start()
   {
-      this.router.navigateByUrl('waitingroom');
+      this.router.navigateByUrl('waitingroom?code=abcd');
   }
 
 }
