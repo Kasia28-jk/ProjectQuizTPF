@@ -5,6 +5,8 @@ import { DataServiceService } from '../data-service.service';
 import { AuthService } from '../auth.service';
 import { Answer } from '../models/answer';
 import { User } from '../models/user';
+import { Result } from '../models/result';
+
 @Component({
   selector: 'app-result-window',
   templateUrl: './result-window.component.html',
@@ -16,6 +18,7 @@ export class ResultWindowComponent  implements OnInit{
   answers: Answer[];
   codePath: string;
   users: User[];
+  results: Result[];
   
   constructor(private router: Router,  private db: AngularFirestore,
      private dataService: DataServiceService,public authService: AuthService,
