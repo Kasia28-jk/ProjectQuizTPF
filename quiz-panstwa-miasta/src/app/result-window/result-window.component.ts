@@ -31,7 +31,7 @@ export class ResultWindowComponent  implements OnInit{
   {
     const params = this.route.snapshot.queryParams;
     this.codePath = params["code"]
-    this.getData2();
+    this.getData();
   }
   
   getData()
@@ -46,21 +46,17 @@ export class ResultWindowComponent  implements OnInit{
   getData2() {
     this.dataService.getAnswersByCode(this.codePath).subscribe((answer: Answer[]) => {
       console.log(answer)
-      this.countResults(answer)
     })
   }
 
-  countResults(answer: Answer[])
+  countResults()
   {
-    
-    answer.forEach(element => 
+    console.log(this.answers)
+    this.answers.forEach(element => 
     {
         let customObj: Result = InitialResult;
-        if(element.userName)
-        {
-          customObj.userName = element.userName
-        }
-
+        console.log(element.userName);
+        customObj.userName = element.userName
         customObj.userId = element.userId
         if(element.animal)
         {
@@ -86,36 +82,35 @@ export class ResultWindowComponent  implements OnInit{
         {
             customObj.score += 5;
         }
-        this.results.push(customObj);
-    });
-
-    console.log(this.results)
-  }
-
-
-  check()
-  {
-    if(this.results.length !== 0)
+        console.log(customObj)
+        let i : number ;
+        i = i+1;
+        this.results.push(customObj)
+        console.log("isds",this.results)
+        /*if(this.results.length !== 0)
         {
         this.results.forEach(element2 => 
         {
           //console.log(customObj.userId)
           console.log(element2.userId)
-          //if(customObj.userId == element2.userId)
-         // {
-   
-         // }
+          if(customObj.userId !== element2.userId)
+         {
+          this.results.push(customObj);
+         }
         //  else
          // {
          //   console.log("nie cos")
-         //   this.results.push(customObj);
+         //  
          // }
         });    
       }
       else
       {
-        //this.results.push(customObj);
-      }
+        this.results.push(customObj);
+      }*/
+    });
+
+    console.log(this.results)
   }
 
 
@@ -126,6 +121,7 @@ export class ResultWindowComponent  implements OnInit{
 
   save()
   {
+    this.countResults();
   }
 
 
