@@ -27,10 +27,12 @@ export class MainGameWindowComponent {
   timeLeft: number;
   intervalId: any;
   codePath: string;
-  answer: Answer;
+  answer: Answer = null;
   nameUser: string;
   radnomUser: string;
   userId: string;
+  finallUserName: string;
+  finallUserId: string;
 
   ngOnInit(): void {
     const params = this.route.snapshot.queryParams;
@@ -39,6 +41,23 @@ export class MainGameWindowComponent {
     console.log(this.radnomUser)
     this.letter = this.getRandomLetter()
     this.startTimer();
+
+    this.getUserName();
+    this.getUserId();
+    if(this.nameUser != null)
+    {
+      this.finallUserId = this.userId 
+      this.finallUserName = this.nameUser 
+    }
+    else
+    {
+        this.finallUserName = this.radnomUser
+
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        const lengthOfCode = 8;
+        const hash = this.makeRandom(4, possible)
+        this.finallUserId = hash
+    }
   }
 
 
@@ -80,7 +99,7 @@ export class MainGameWindowComponent {
   }
 
 
-  saveDataToFirestore() {
+  saveDataToFirestoreOLD() {
     this.firestoreCollection.add({
       animal: this.animal,
       city: this.city,
@@ -94,9 +113,11 @@ export class MainGameWindowComponent {
 
   }
   
-  saveDataToFirestore2() 
+  saveDataToFirestoreWRONG() 
   {
-    this.answer.animal = this.animal;
+    console.log(this.animal)
+    this.answer.animal = this.animal.toString();
+    console.log(this.answer.animal)
     this.answer.city = this.city;
     this.answer.country = this.country;
     this.answer.item = this.item;
@@ -105,18 +126,39 @@ export class MainGameWindowComponent {
     this.answer.gameID = this.gameID;
     this.answer.letter = this.letter;
     this.answer.code = this.codePath;
-    this.getUserName();
-    this.getUserId();
-    if(this.nameUser != null)
-    {
-      this.answer.userId = this.userId 
-      this.answer.userId = this.nameUser 
-    }
 
 
     this.dataService.createAnswer(this.answer);
 
   }
+
+
+  saveDataToFirestore() {
+    this.firestoreCollection.add({
+      animal: this.animal,
+      city: this.city,
+      country: this.country,
+      item: this.item,
+      plant: this.plant,
+      river: this.river,
+      gameID: this.gameID,
+      letter: this.letter,
+      code: this.codePath,
+      userId: this.finallUserId,
+      userName: this.finallUserName
+    })
+
+  }
+
+  makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+
+  
 
   getUserName()
   {

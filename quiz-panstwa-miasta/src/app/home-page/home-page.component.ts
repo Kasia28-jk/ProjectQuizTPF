@@ -77,7 +77,7 @@ export class HomePageComponent implements OnInit{
 
   copyLink()
   {
-    navigator.clipboard.writeText("https://quiz-panstwa-miasta.web.app/" + this.router.url);
+    navigator.clipboard.writeText("http://localhost:4200/" + this.router.url);
     // https://quiz-panstwa-miasta.web.app//=waitingroom?code=
   }
 }

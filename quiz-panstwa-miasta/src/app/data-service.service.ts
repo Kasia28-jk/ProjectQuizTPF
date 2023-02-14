@@ -15,7 +15,7 @@ export class DataServiceService {
     return this.answers.add(answer);
   }
 
-  getUsersByCode(code: string)
+  getAnswersByCode(code: string)
    {
       return this.db.collection(this.path, x =>x
         .where('code','==', code)).valueChanges();
