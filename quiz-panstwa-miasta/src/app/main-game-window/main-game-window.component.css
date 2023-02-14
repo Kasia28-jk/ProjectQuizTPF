@@ -24,6 +24,7 @@ h1 {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
+  color: white;
 }
 .form-container {
   display: flex;
