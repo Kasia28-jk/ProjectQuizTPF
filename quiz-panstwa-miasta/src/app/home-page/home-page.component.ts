@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit{
   animals: string[];
   constructor(private router: Router, public dialog: MatDialog, public authService: AuthService,private route: ActivatedRoute, private userService: UserService) 
   {
-    this.animals=['słoń','małpka','pelikan','kot','pies','żyrafa','zebra','chomik','wiewiórka','koń','myszoskoczek']
+    this.animals=['słoń','małpka','pelikan','kot','pies','żyrafa','zebra','chomik','wiewiórka','koń','myszoskoczek','kapibara','świnka morska','lemur','pingwin','jeż']
     this.getUserName();
   }
 
@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit{
 
   copyLink()
   {
-    navigator.clipboard.writeText("http://localhost:4200/" + this.router.url);
+    navigator.clipboard.writeText("https://quiz-panstwa-miasta.web.app/" + this.router.url);
     // https://quiz-panstwa-miasta.web.app//=waitingroom?code=
   }
 }

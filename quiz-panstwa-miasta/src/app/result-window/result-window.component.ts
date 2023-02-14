@@ -12,13 +12,9 @@ export class ResultWindowComponent{
   data: any [];
   userId: string;
   constructor(private router: Router,  private db: AngularFirestore, private dataService: DataServiceService,public authService: AuthService) {}
-  dupa(){
-    this.dataService.getData().subscribe(data => {
-      this.data = data;
-      console.log(this.data);
-    });
+  
 
-  }
+
 
   grajPonownie()
   {
