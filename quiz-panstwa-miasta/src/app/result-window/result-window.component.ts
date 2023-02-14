@@ -36,57 +36,34 @@ export class ResultWindowComponent  implements OnInit{
   
   getData()
   {
-    this.dataService.getAnswersByCode(this.codePath).subscribe((answer: Answer[] | undefined) =>{
+    this.dataService.getAnswersByCode(this.codePath).subscribe((answer: Answer[] | any) =>{
       this.answers = answer
-    })
-
-    //console.log(this.answers)
-  }
-
-  getData2() {
-    this.dataService.getAnswersByCode(this.codePath).subscribe((answer: Answer[]) => {
-      console.log(answer)
+      this.countResults()
     })
   }
 
   countResults()
   {
-    console.log(this.answers)
     this.answers.forEach(element => 
     {
-        let customObj: Result = InitialResult;
+        let customObj = {
+          userId : "",
+          userName: "",
+          score: 0
+      };
         console.log(element.userName);
         customObj.userName = element.userName
         customObj.userId = element.userId
-        if(element.animal)
+        for(let key in element)
         {
+          if(element[key])
+          {
             customObj.score += 5;
+          }
         }
-        if(element.city)
-        {
-            customObj.score += 5;
-        }
-        if(element.country)
-        {
-            customObj.score += 5;
-        }
-        if(element.item)
-        {
-            customObj.score += 5;
-        }
-        if(element.plant)
-        {
-            customObj.score += 5;
-        }
-        if(element.river)
-        {
-            customObj.score += 5;
-        }
-        console.log(customObj)
-        let i : number ;
-        i = i+1;
+      
+        console.log("one object: ",customObj)
         this.results.push(customObj)
-        console.log("isds",this.results)
         /*if(this.results.length !== 0)
         {
         this.results.forEach(element2 => 
@@ -110,7 +87,7 @@ export class ResultWindowComponent  implements OnInit{
       }*/
     });
 
-    console.log(this.results)
+    console.log("Result after foreach: ",this.results)
   }
 
 
@@ -121,7 +98,7 @@ export class ResultWindowComponent  implements OnInit{
 
   save()
   {
-    this.countResults();
+    //this.countResults();
   }
 
 
