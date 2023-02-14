@@ -10,7 +10,7 @@ export class DataServiceService {
   answers : AngularFirestoreCollection<Answer> = null
   constructor( private db: AngularFirestore) {}
 
-  createUser(answer: Answer)
+  createAnswer(answer: Answer)
   {
     return this.answers.add(answer);
   }

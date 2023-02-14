@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { DataServiceService } from '../data-service.service';
+import { Answer } from '../models/answer';
 
 @Component({
   selector: 'app-main-game-window',
@@ -23,15 +26,26 @@ export class MainGameWindowComponent {
   firestoreCollection : AngularFirestoreCollection;
   timeLeft: number;
   intervalId: any;
+  codePath: string;
+  answer: Answer;
+  nameUser: string;
+  radnomUser: string;
+  userId: string;
 
   ngOnInit(): void {
-
+    const params = this.route.snapshot.queryParams;
+    this.codePath = params["code"]
+    this.radnomUser = params["userName"]
+    console.log(this.radnomUser)
     this.letter = this.getRandomLetter()
     this.startTimer();
   }
 
 
-  constructor(private firestore: AngularFirestore,private router: Router) {
+  constructor(private firestore: AngularFirestore,private router: Router, 
+    private route: ActivatedRoute, private dataService: DataServiceService,
+    public authService: AuthService) 
+  {
     this.gameID = this.generateGameId()
     this.firestoreCollection = firestore.collection('answers');
   }
@@ -79,6 +93,42 @@ export class MainGameWindowComponent {
     })
 
   }
+  
+  saveDataToFirestore2() 
+  {
+    this.answer.animal = this.animal;
+    this.answer.city = this.city;
+    this.answer.country = this.country;
+    this.answer.item = this.item;
+    this.answer.plant = this.plant;
+    this.answer.river = this.river;
+    this.answer.gameID = this.gameID;
+    this.answer.letter = this.letter;
+    this.answer.code = this.codePath;
+    this.getUserName();
+    this.getUserId();
+    if(this.nameUser != null)
+    {
+      this.answer.userId = this.userId 
+      this.answer.userId = this.nameUser 
+    }
+
+
+    this.dataService.createAnswer(this.answer);
+
+  }
+
+  getUserName()
+  {
+    this.nameUser = this.authService.getUserName();
+    console.log(this.nameUser);
+  }
+
+  getUserId()
+  {
+    this.userId = this.authService.getUserId();
+    console.log(this.nameUser);
+  }
 
   onSubmitClick() {
     this.saveDataToFirestore()
@@ -94,7 +144,8 @@ export class MainGameWindowComponent {
 
   onEndGameClick() {
     this.saveDataToFirestore();
-    this.router.navigateByUrl('result');
+    const hash = this.codePath
+    this.router.navigateByUrl('result?code=' + hash);
   }
 
   generateGameId() {

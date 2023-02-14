@@ -9,5 +9,6 @@ export interface Answer
     plant: string;
     river: string;
     userId: string;
+    userName: string;
     gameID: string;
 }

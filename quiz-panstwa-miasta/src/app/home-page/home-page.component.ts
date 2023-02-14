@@ -17,7 +17,10 @@ export class HomePageComponent implements OnInit{
   users: User[];
   codePath: string;
   animals: string[];
-  constructor(private router: Router, public dialog: MatDialog, public authService: AuthService,private route: ActivatedRoute, private userService: UserService) 
+  selectedAnimal: string;
+  constructor(private router: Router, public dialog: MatDialog,
+     public authService: AuthService,private route: ActivatedRoute, 
+     private userService: UserService) 
   {
     this.animals=['słoń','małpka','pelikan','kot','pies','żyrafa','zebra','chomik','wiewiórka','koń','myszoskoczek','kapibara','świnka morska','lemur','pingwin','jeż']
     this.getUserName();
@@ -38,7 +41,8 @@ export class HomePageComponent implements OnInit{
     {
       const random = Math.floor(Math.random() * this.animals.length);
       console.log(random)
-      this.userService.createUser({name: this.animals[random], code: this.codePath})
+      this.selectedAnimal = this.animals[random]
+      this.userService.createUser({name: this.selectedAnimal, code: this.codePath})
     }
     //3. get from friestore list of users with such code
     /*this.userService.users.valueChanges().subscribe((users)=>{
@@ -55,7 +59,8 @@ export class HomePageComponent implements OnInit{
 
   start()
   {
-    this.router.navigateByUrl('game');
+    const hash = this.codePath
+    this.router.navigateByUrl('game?code=' + hash + '&userName=' + this.selectedAnimal);
   }
 
   openDialog(): void {
