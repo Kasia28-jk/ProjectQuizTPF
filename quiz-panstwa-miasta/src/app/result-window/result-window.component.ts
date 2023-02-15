@@ -38,6 +38,7 @@ export class ResultWindowComponent  implements OnInit{
   {
     this.dataService.getAnswersByCode(this.codePath).subscribe((answer: Answer[] | any) =>{
       this.answers = answer
+      console.log(answer)
       this.countResults()
     })
   }
@@ -51,43 +52,67 @@ export class ResultWindowComponent  implements OnInit{
           userName: "",
           score: 0
       };
-        console.log(element.userName);
-        customObj.userName = element.userName
-        customObj.userId = element.userId
-        for(let key in element)
-        {
-          if(element[key])
-          {
-            customObj.score += 5;
-          }
-        }
       
-        console.log("one object: ",customObj)
-        this.results.push(customObj)
-        /*if(this.results.length !== 0)
+      let value = this.results.find(x => x.userId === element.userId)
+      if(value)
+      {
+        if(element.animal)
         {
-        this.results.forEach(element2 => 
+          value.score += 5;
+        }
+        if(element.city)
         {
-          //console.log(customObj.userId)
-          console.log(element2.userId)
-          if(customObj.userId !== element2.userId)
-         {
-          this.results.push(customObj);
-         }
-        //  else
-         // {
-         //   console.log("nie cos")
-         //  
-         // }
-        });    
+          value.score += 5;
+        }
+        if(element.country)
+        {
+          value.score += 5;
+        }
+        if(element.item)
+        {
+          value.score += 5;
+        }
+        if(element.plant)
+        {
+          value.score += 5;
+        }
+        if(element.river)
+        {
+          value.score += 5;
+        }
       }
       else
       {
+        customObj.userName = element.userName
+        customObj.userId = element.userId
+        if(element.animal)
+        {
+            customObj.score += 5;
+        }
+        if(element.city)
+        {
+            customObj.score += 5;
+        }
+        if(element.country)
+        {
+            customObj.score += 5;
+        }
+        if(element.item)
+        {
+            customObj.score += 5;
+        }
+        if(element.plant)
+        {
+            customObj.score += 5;
+        }
+        if(element.river)
+        {
+            customObj.score += 5;
+        }
+      
         this.results.push(customObj);
-      }*/
+      }  
     });
-
-    console.log("Result after foreach: ",this.results)
   }
 
 
@@ -98,6 +123,7 @@ export class ResultWindowComponent  implements OnInit{
 
   save()
   {
+    //to do save changes in other table
     //this.countResults();
   }
 
